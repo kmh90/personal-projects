@@ -1,0 +1,96 @@
+body {
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+h2 {
+    font-size: 2rem;
+    margin: 0;
+}
+
+hr {
+    border: dashed;
+    color: #FFBF78;
+    margin: 5rem;
+}
+
+a {
+    color: #7B4019;
+}
+
+/* Top container */
+
+#title {
+    background-color: #FFEEA9;
+}
+
+.top-container {
+    color: #7B4019;
+}
+
+.title-text {
+    font-family: "Sacramento", cursive;
+    font-weight: bolder;
+    font-size: 4.5rem;
+}
+
+/* Mid container */
+
+.profile {
+    border-radius: 50%;
+    height: 150px;
+    width: 150px;
+}
+
+.projects {
+    height: auto;
+}
+
+.skills-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    row-gap: 1rem;
+    place-items: center start;
+}
+
+.skill {
+    text-align: justify;
+}
+
+.skill-header {
+    font-weight: bold;
+    color: #7B4019;
+    font-size: 1.25em;
+}
+
+#middle > div h2 {
+    color: #7B4019;
+    font-weight: 50%;
+}
+
+.contact-header {
+    font-weight: bold;
+    color: #7b4019;
+}
+
+.contact-btn:hover {
+    background-color: #fe9650f7;
+}
+
+.contact-btn {
+    background-color: #FF7D29;
+    border-color: #fa6400;
+    border-style: solid;
+    font-weight: bold;
+}
+
+/* Last container */
+
+#footer {
+    background-color: #FF7D29;
+}
+
+.links {
+    margin: 10px;
+    font-weight: bold;
+}
