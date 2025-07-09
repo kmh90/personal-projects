@@ -1,0 +1,64 @@
+<%- include('partials/header.ejs') %>
+
+<div class="container">
+
+  <form action="/cryptocurrencies" method="POST">
+    <div class="input-group pb-2">
+      <% if (!locals.searchTerm) { %>
+      <input type="text" class="form-control" placeholder="Search..." name="search" aria-label="Search..." aria-describedby="button-addon2">
+      <% } else { %>
+      <input type="text" class="form-control" placeholder="Search..." name="search" value="<%= searchTerm %>" aria-label="Search..." aria-describedby="button-addon2">
+      <% }%>
+      <button class="btn btn-secondary" type="button" id="button-addon2">Search</button>
+    </div>
+  </form>
+
+  <hr style="height: 4px; background-color: white; border: none;">
+
+  <%# Creation of page number buttons and double chevrons both sides to direct users to each extreme ends of the search result(s) %>
+  <%# Only include searchTerm text if it is passed %>
+
+  <div class="d-flex justify-content-center gap-3">
+    <% if (locals.pageNumData) { %>
+    <a href="/cryptocurrencies?page=1<% if (locals.searchTerm) { %>&search=<%= searchTerm %><% }%>"><button type="button" class="btn btn-primary">
+        << </button></a>
+    <% for( let j = Math.max(1,pageNumData.currentPageNum - pageNumData.pageNumLimit); j <= Math.min(pageNumData.currentPageNum + pageNumData.pageNumLimit, pageNumData.pageNumbers); j++ ) { %>
+    <a href="/cryptocurrencies?page=<%= j %><% if (locals.searchTerm) { %>&search=<%= searchTerm %><% }%>"><button type="button" class="btn btn-primary
+      <% if (j === pageNumData.currentPageNum ) { %>
+        active
+      <% } %>
+    "><%= j %></button></a>
+    <% } %>
+    <a href="/cryptocurrencies?page=<%- pageNumData.pageNumbers %><% if (locals.searchTerm) { %>&search=<%= searchTerm %><% }%>"><button type="button" class="btn btn-primary">>></button></a>
+    <% } %>
+  </div>
+
+  <div class="row g-4 py-5 row-cols-4">
+
+    <% if (!locals.data) { %>
+    <div class="col-12">
+      <p style="color: white;">
+        Sorry, we're unable to obtain any information!
+      </p>
+    </div>
+    <% } else { %>
+    <% for( let i = 0; i < data.length; i++ ) { %>
+    <a class="text-decoration-none" href="/cryptocurrencies/<%= data[i].id %>">
+      <div class="col-3 card card-cover w-100 mh-100 custom-card-bg rounded-5">
+        <div class="px-2 py-3 text-center align-items-center" style="height: 100%;">
+          <%# use onerror to catch broken logo.pngs %>
+          <img class="responsive-img" src="https://static.coinpaprika.com/coin/<%= data[i].id %>/logo.png" height="60%" width="60%" alt="<%= data[i].name %>" onerror="this.onerror=null; this.src='https://www.kindpng.com/picc/m/430-4306606_crypto-coin-hd-png-download.png'">
+          <div class="card-body pb-0">
+            <h2 class="card-title card-header-text text-truncate">
+              <%= data[i].name %>
+            </h2>
+          </div>
+        </div>
+      </div>
+    </a>
+    <% } %>
+    <% } %>
+  </div>
+</div>
+
+<%- include('partials/footer.ejs') %>

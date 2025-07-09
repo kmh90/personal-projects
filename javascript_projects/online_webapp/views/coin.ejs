@@ -1,0 +1,92 @@
+<%- include('partials/header.ejs') %>
+<main class="container my-5">
+  <div class="row g-5 about-page">
+    <div class="col-md-3 d-flex justify-content-center">
+      <div class="position-sticky text-center" style="top: 2rem;">
+        <h1 class="coin-name m-0"><%= data.name %></h1>
+        <% if (data.logo === null || data.logo === "") { %>
+        <p class="my-3">No Image available!</p>
+        <% } else { %>
+        <img class="my-3" src="<%= data.logo %>" alt="<%= data.name %>">
+        <% } %>
+        <table class="mt-2 table table-borderless rounded-1">
+          <tbody>
+            <tr>
+              <td class="text-start"><strong>ID</strong></td>
+              <td class="text-start"><%= data.id %></td>
+            </tr>
+            <tr>
+              <td class="text-start"><strong>Rank</strong></td>
+              <td class="text-start"><%= data.rank %></td>
+            </tr>
+            <tr>
+              <td class="text-start"><strong>Symbol</strong></td>
+              <td class="text-start"><%= data.symbol %></td>
+            </tr>
+            <tr>
+              <td class="text-start"><strong>Type</strong></td>
+              <td class="text-start"><%= data.type %></td>
+            </tr>
+            <tr>
+              <td class="text-start"><strong>Started from</strong></td>
+              <td class="text-start">
+                <% if (data.started_at === null || data.started_at === "") { %>
+                NA
+                <% } else { %>
+                <%= data.started_at %>
+                <% } %>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <div class="col-md-9">
+      <h3 class="pb-4 mb-4 fst-italic border-bottom">
+        Description
+      </h3>
+      <article class="blog-post">
+        <p class="m-0" style="white-space: pre-wrap;"><%= data.description %></p>
+        <% if (!data.message === null && data.message.length !== 0) { %>
+        <h3 class="pb-4 mb-4 mt-5 fst-italic border-bottom">
+          Message
+        </h3>
+        <p>
+          <%= data.message %>
+        </p>
+        <% } %>
+        <% if (data.team.length !== 0) { %>
+        <h3 class="pb-4 mb-4 mt-5 fst-italic border-bottom">
+          Team
+        </h3>
+        <% data.team.forEach(member => { %>
+        <ul>
+          <li>
+            <%= member.name %> (<%= member.position %>)
+          </li>
+        </ul>
+        <% }) %>
+        <% } %>
+        <h3 class="pb-4 mb-4 mt-5 fst-italic border-bottom">
+          Links
+        </h3>
+        <ul>
+          <% for (const [key, value] of Object.entries(data.links)) { %>
+          <li><strong><%= key %></strong></li>
+          <ul>
+            <% if (Array.isArray(value)) { %>
+            <% value.forEach((link) => { %>
+            <li><a class="text-decoration-none" style="color: white;" href="<%= link %>"><%= link %></a></li>
+            <% }) %>
+            <% } else { %>
+            <li>No link available</li>
+            <% } %>
+          </ul>
+          <% } %>
+        </ul>
+      </article>
+    </div>
+  </div>
+</main>
+
+<%- include('partials/footer.ejs') %>

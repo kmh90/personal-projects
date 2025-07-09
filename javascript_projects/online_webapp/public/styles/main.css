@@ -1,0 +1,74 @@
+header {
+    background-color: #3DC2EC;
+}
+
+.header-title {
+    font-family: "Instrumental Sans", serif;
+}
+
+body {
+    font-family: "Helvetica", Georgia, "Times New Roman", serif;
+    /* background-color: #4B70F5; */
+    background-image: url('/images/crypto1.jpg');
+    background-size: cover;
+    /* scale to cover container */
+    background-position: center;
+    /* center the image */
+    background-repeat: no-repeat;
+    /* prevent tiling */
+    min-height: 100vh;
+    /* font-size: clamp(1.5rem, 1vw, 3rem); */
+}
+
+/* Header Nav */
+.header-nav-color {
+    color: black;
+}
+
+/* Buttons */
+.custom-button-color {
+    background-color: #c4f0ff;
+    color: black;
+}
+
+/* Cover */
+.cover-text {
+    color: white;
+}
+
+/* Cards */
+.card-text {
+    font-size: clamp(0.5rem, 2vw, 1rem);
+}
+
+.card-header-text {
+    font-size: clamp(0.25rem, 1.5vw, 2rem);
+}
+
+.custom-card-bg {
+    background-color: #cff4ff;
+}
+
+.responsive-img {
+  width: 10vw;
+  height: 10vw;         /* scale height to 10% of viewport width */
+  object-fit: contain;
+  object-position: center;
+}
+
+/* For written texts */
+.about-page {
+    background-color: #02098bcf;
+    color: white;
+    padding-bottom: 45px;
+}
+
+/* Coin page */
+.coin-name {
+    font-size: clamp(2rem, 3vw, 4rem);
+}
+
+/* Footer */
+.custom-footer {
+    background-color: #3DC2EC;
+}
