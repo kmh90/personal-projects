@@ -1,0 +1,65 @@
+<%- include('partials/header.ejs') %>
+
+<main class="container">
+  <div class="row g-5">
+    <div class="col-md-8">
+      <h3 class="pb-4 mb-4 fst-italic border-bottom">
+        All posts
+      </h3>
+      <% if (posts.length===0) { %>
+      <article class="blog-post">
+        <h2 class="blog-post-title">
+          No posts to display yet!
+        </h2>
+      </article>
+      <% } else { %>
+      <% for( let i=posts.length - 1; i>= 0; i-- ) { %>
+      <article class="blog-post">
+        <h2 class="blog-post-title">
+          <%= posts[i].title %>
+        </h2>
+        <p class="blog-post-meta">Posted on <%= posts[i].initialDate %>
+          <% if (posts[i].lastUpdatedDate.length!==0) { %>
+          (Last Updated on <%= posts[i].lastUpdatedDate %>)
+          <% } %>
+        </p>
+        <p style="white-space: pre-wrap"><%= posts[i].msg %></p>
+
+        <div class="d-flex gap-2">
+          <form action="/edit" method="POST">
+            <input type="hidden" name="postNumber" value="<%= i %>" />
+            <button type="submit" class="btn btn-secondary mb-3">Edit</button>
+          </form>
+          <form action="/delete" method="POST">
+            <input type="hidden" name="postNumber" value="<%= i %>" />
+            <button type="submit" class="btn btn-danger mb-3">Delete</button>
+          </form>
+        </div>
+
+      </article>
+      <% } %>
+      <% } %>
+    </div>
+
+    <%- include('partials/sidebar.ejs') %>
+
+    <div class="m-0 col-12">
+      <h3 class="py-4 m-0 fst-italic border-top">
+        Add a post
+      </h3>
+      <form action="/create" method="POST">
+        <div class="mb-3">
+          <label for="postTitle" class="form-label">Title</label>
+          <input type="text" class="form-control" id="postTitle" name="title" placeholder="What's your title?" required>
+        </div>
+        <div class="mb-3">
+          <label for="postMessage" class="form-label">Message</label>
+          <textarea class="form-control" id="postMessage" name="message" placeholder="What would you like to post today?" required></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary mb-3">Post</button>
+      </form>
+    </div>
+  </div>
+</main>
+
+<%- include('partials/footer.ejs') %>

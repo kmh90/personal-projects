@@ -1,0 +1,35 @@
+body {
+    font-family: "Playfair Display", Georgia, "Times New Roman", serif;
+}
+
+/* Header */
+
+.banner-image {
+    background-image: url('/images/banner.png');
+    background-size: cover;
+    /* scale to cover container */
+    background-position: center;
+    /* center the image */
+    background-repeat: no-repeat;
+    /* prevent tiling */
+    padding: 4rem;
+}
+
+h1.banner-text {
+    /* background-color: rgba(240, 241, 226, 0.801); */
+    /* font-size: 5rem; */
+        line-height: 1.2;
+    font-size: clamp(1.5rem, 10vw, 10rem);
+    color: beige;
+    text-shadow:
+        1px 1px 2px yellow,
+        0 0 0.2em gray;
+    font-family: "Playfair Display", Georgia, "Times New Roman", cursive;
+    margin: 3rem;
+    /* display: inline; */
+}
+
+/* Footer */
+.custom-footer {
+    background-color: beige;
+}

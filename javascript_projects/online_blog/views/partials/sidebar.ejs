@@ -1,0 +1,42 @@
+<div class="col-md-4">
+  <div class="position-sticky" style="top: 2rem;">
+    <div class="p-4 mb-3 bg-body-tertiary rounded">
+      <h4 class="fst-italic">About</h4>
+      <p class="mb-0">Welcome to MH's blog. Feel free to post anything you'd like to share with others!</p>
+    </div>
+    <div>
+      <% if (posts.length!==0) { %>
+      <h4 class="fst-italic">Recent posts</h4>
+      <ul class="list-unstyled">
+        <%# Limits recent posts up to 3 %>
+      <% for( let i=posts.length - 1; i>= Math.max(0,posts.length - 3); i-- ) { %>
+      <li> <a class="d-flex flex-column flex-lg-row gap-3 align-items-start align-items-lg-center py-3 link-body-emphasis text-decoration-none border-top" href="#"> <img class="col-4" src="/images/pen.jpg" width="100%" height="100%" alt="pen" />
+          <div class="col-lg-8">
+            <h6 class="mb-0"><%= posts[i].title %></h6> <small class="text-body-secondary"><% if (posts[i].lastUpdatedDate.length!==0) { %>
+              <%= posts[i].lastUpdatedDate %>
+              <% } else { %>
+              <%= posts[i].initialDate %>
+              <% } %>
+            </small>
+          </div>
+        </a> </li>
+      <% } %>
+      </ul>
+      <% } %>
+    </div>
+    <div class="p-4">
+      <h4 class="fst-italic">Social links</h4>
+      <ol class="list-unstyled">
+        <li><a href="https://github.com/kmh90">GitHub</a></li>
+        <li><a href="https://www.linkedin.com/in/ming-han-kang-92b281177/">LinkedIn</a></li>
+      </ol>
+    </div>
+    <div class="p-4">
+      <h4 class="fst-italic">Contact me</h4>
+      <ol class="list-unstyled">
+        <li>Email: <a href="mailto:someone@hotmail.com">someone@example.com</a></li>
+        <li>Mobile: +12 3456789</li>
+      </ol>
+    </div>
+  </div>
+</div>
